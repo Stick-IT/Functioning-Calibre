@@ -1,1 +1,0 @@
-"react-native-custom-qr-codes-expo": "^2.2.0",
