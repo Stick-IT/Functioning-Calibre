@@ -112,7 +112,7 @@ export default  ({ route, navigation })  =>  {
               }
             }
             value={firstName}
-            placeholder='My firstname is'
+            placeholder='first'
             returnKeyType={'next'}
             enablesReturnKeyAutomatically={true}
             onSubmitEditing={() => ref.current.focus()}
@@ -159,7 +159,7 @@ export default  ({ route, navigation })  =>  {
                 color={COLOR}
                 placeholderTextColor={PLACEHOLDER}
                 value={lastName}
-                placeholder='My lastname is'
+                placeholder='last'
                 returnKeyType={'next'}
                 onSubmitEditing={()=> handlePress()}
                 enablesReturnKeyAutomatically={true}

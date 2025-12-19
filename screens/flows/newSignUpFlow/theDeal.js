@@ -53,16 +53,26 @@ export default ({navigation}) => {
                 <ScrollView style={TheDeal.container} scrollEnabled={shouldShow ? true : false}>
                 
                     <Text style={TheDeal.text}>
-                        There is currently no awesome social digital tool. Calibre is created for ourselves and the youth at large; who shouldn’t be drawn into platforms that profits are based on an illusion of connection that is mentally draining. 
+                        There is currently no awesome social digital tool. 
+                        Calibre is created for ourselves and the youth at large; 
+                        who shouldn’t be drawn into platforms that profits are 
+                        based on an illusion of connection that is mentally draining. 
                         {"\n"}{"\n"}
                         We believe that the moments and connections that people hold dearest happens out there IRL
                         {"\n"}{"\n"}
                         {shouldShow ? (
                             <Text>
-                                Our purpose is to decrease global loneliness by improving the way we connect online. We believe that friendships are an essential part of human well-being and that todays online social networking environments are eroding how people meaningfully connect. 
-                                {"\n"}{"\n"}
-                                In order to secure the future generations mental health a fundamental difference in how we connect in the world is needed. We intend to push the needle in this direction.
-                                {"\n"}{"\n"}
+                                Our purpose is to decrease global 
+                                loneliness by improving the way we connect 
+                                online. We believe that friendships are an 
+                                essential part of human well-being and that 
+                                todays online social networking 
+                                environments are eroding 
+                                how people connect. 
+                                In order to secure the future generations 
+                                mental health a fundamental difference in 
+                                how we connect in the world is needed. 
+                                We intend to push the needle in this direction.
                             </Text>) : null }
 
                         <TouchableOpacity onPress={() => showMore()}>

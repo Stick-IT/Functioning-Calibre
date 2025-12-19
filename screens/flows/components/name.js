@@ -83,7 +83,7 @@ const Name = props => {
             }
           }
           value={firstName}
-          placeholder='My firstname is'
+          placeholder='first'
           returnKeyType={'next'}
           enablesReturnKeyAutomatically={true}
           onSubmitEditing={() => {ref.current.focus()}}
@@ -130,7 +130,7 @@ const Name = props => {
                 color={COLOR}
                 placeholderTextColor={PLACEHOLDER}
                 value={lastName}
-                placeholder='My lastname is'
+                placeholder='last'
                 returnKeyType={'next'}
                 onSubmitEditing={()=> handlePress(firstName, lastName)}
                 enablesReturnKeyAutomatically={true}
