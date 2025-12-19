@@ -56,7 +56,7 @@ export default ({ navigation, route }) => {
             console.log(age)
           }
           if(age>=13){
-            console.log("\nBday: "+valid)
+            console.log("Bday: "+valid)
 
             navigation.navigate('Gender', {
                 bday: valid,

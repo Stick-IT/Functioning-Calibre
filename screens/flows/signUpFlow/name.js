@@ -25,7 +25,7 @@ export default  ({ route, navigation })  =>  {
     const handlePress = () => {
         Keyboard.dismiss();
         if(firstName != "" && lastName != ""){
-          console.log("\nBday: "+route.params.bday)
+          console.log("Bday: "+route.params.bday)
           console.log("Gender: "+ route.params.gender)
           console.log("Name: "+ firstName + " "+ lastName)
           navigation.navigate('City', {

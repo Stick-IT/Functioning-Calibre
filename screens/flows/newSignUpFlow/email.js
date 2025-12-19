@@ -13,9 +13,21 @@ const windowHeight = Dimensions.get('window').height;
 
 export default ({ navigation, route }) => {
   const [email, setEmail] = useState('');
+  const [buttonState, setButtonState] = useState(true);
+  
+  // Email validation function
+  const validateEmail = (email) => {
+    const emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    return emailReg.test(email);
+  }
   
   // Simple navigation function
   const nextPage = () => {
+    if (email === "" || !validateEmail(email)) {
+      alert('Please enter a valid email');
+      return;
+    }
+    console.log("Email: " + email);
     navigation.navigate('Name', { 
       bday: route.params.bday,
       email: email
@@ -32,6 +44,8 @@ export default ({ navigation, route }) => {
     from: { width: '16%' },
     to: { width: '32%' }
   };
+
+  const buttonStateStyle = buttonState ? signUp.lowOpacity : "";
 
   return (
     <Container>
@@ -53,7 +67,14 @@ export default ({ navigation, route }) => {
           width={windowWidth - 80} 
           height={50} 
           borderRadius={RADIUS}
-          onChangeText={setEmail}
+          onChangeText={(value) => {
+            setEmail(value);
+            if (value === "" || !validateEmail(value)) {
+              setButtonState(true);
+            } else {
+              setButtonState(false);
+            }
+          }}
           value={email}
           autoFocus={true}
           placeholder="john@doe.com"
@@ -68,6 +89,8 @@ export default ({ navigation, route }) => {
       <View style={ActionContainer.actionContainerSignUp}>
         <View style={ActionContainer.actionContainerSignUpAvoiding}>
           <NeuButton
+            disabled={buttonState}
+            style={buttonStateStyle}
             onPress={nextPage} 
             width={140} 
             height={50} 
