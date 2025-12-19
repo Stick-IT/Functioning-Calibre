@@ -19,7 +19,7 @@ const windowHeight = Dimensions.get('window').height;
 export default ({ route, navigation }) => {
    
 
-    const GOOGLE_API_KEY = 'AIzaSyC1DL8gnppq5oNaBExpRynw-VI2_zGKkQM';
+    const GOOGLE_API_KEY = 'AIzaSyBth6_0sv06bYvW29eowv4lcdI6wdbGtbQ';
 
 
     const [buttonState, setButtonState] = React.useState(true);

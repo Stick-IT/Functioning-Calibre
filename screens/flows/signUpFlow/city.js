@@ -6,22 +6,23 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import DropDownPicker from '../../../components/dropdown-picker';
 
-// import GoconInput from '../../../components/GoconInput';
+// Importing styles and UI components
 import { signUp } from "./style";
 import { NeuView, NeuInput, NeuButton } from '../../../components/neu-element';
 import {BACKGROUND, RADIUS, COLOR, Neumorphism, NeumorphismInput, Container, ActionContainer, HeroContainer, ProgressBar, DropDown} from "../../../components/Style";
 
 import { Dimensions } from 'react-native';
 
+// Get screen dimensions for responsive UI adjustments
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default ({ route, navigation }) => {
    
+    // Google API key for PlacesInput component
+    const GOOGLE_API_KEY = 'AIzaSyBth6_0sv06bYvW29eowv4lcdI6wdbGtbQ';
 
-    const GOOGLE_API_KEY = 'AIzaSyC1DL8gnppq5oNaBExpRynw-VI2_zGKkQM';
-
-
+    // State variables
     const [buttonState, setButtonState] = React.useState(true);
     const [countryState, setCountryState] = useState(false);
     const [country, setCountry] = useState('');
@@ -30,7 +31,7 @@ export default ({ route, navigation }) => {
    
 
     
-
+// Function to handle city selection
 const handlePress = (city, cityLat, cityLng) => {
     // Keyboard.dismiss();
     console.log("\nBday: "+route.params.bday)
@@ -42,9 +43,11 @@ const handlePress = (city, cityLat, cityLng) => {
     console.log("City lat: "+ cityLat)
     console.log("City lng: "+ cityLng)
 
+    // Check if any city-related information is missing
     if(city == "" || cityLat == "" || cityLng == ""){
         alert("Something went wrong! Please try again")
     }else{
+        // Navigate to the next screen with user details
         navigation.navigate('Phone', {
         bday: route.params.bday,
         gender: route.params.gender,
@@ -58,6 +61,7 @@ const handlePress = (city, cityLat, cityLng) => {
     });
     }
   }
+  // Animation configurations for fade-in effect
   const fadeIn = {
     from: {
       opacity: 0,
@@ -66,6 +70,7 @@ const handlePress = (city, cityLat, cityLng) => {
       opacity: 1,
     },
   };
+  // Animation configurations for progress bar
   const progress = {
     from: {
       width: '27%',
@@ -74,23 +79,28 @@ const handlePress = (city, cityLat, cityLng) => {
       width: '36%',
     }
   };
-
+  
+  // Conditionally apply opacity style to button based on buttonState
   const buttonStateStyle = buttonState ? signUp.lowOpacity : "";
 
     return(
         <Container>
+          {/* Dismiss keyboard when clicking outside input fields */}
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={{height: '100%', width: '100%', zIndex:-99}}></View>
         </TouchableWithoutFeedback>
         
+        {/* Animated progress bar */}
         <NeuView style={ProgressBar.progressBar} color={BACKGROUND} borderRadius={RADIUS} width={windowWidth-80} height={15}>
           <Animatable.View animation={progress} style={ProgressBar.progress}></Animatable.View>
         </NeuView>
-
+        
+        {/* Animated header text */}
         <Animatable.View animation={fadeIn} duration={2000} style={HeroContainer.container}>              
           <Text style={HeroContainer.text}>What is your <Text style={HeroContainer.greenText}>city</Text>?</Text>
         </Animatable.View>
-
+        
+        {/* Neumorphism container for country and city selection */}
         <View style={[NeumorphismInput.container, {top: '25%',height: '20%'}]}>
       
             
@@ -120,6 +130,7 @@ const handlePress = (city, cityLat, cityLng) => {
                 />
             </NeuView>
             
+            {/* City input field, visible only if country is selected */}
             <View style={ [(countryState ? "" : {display: 'none'} ), {width: windowWidth-80} ]}>
                 <NeuView inset color={BACKGROUND} width={windowWidth-80} height={50} borderRadius={RADIUS} >
                     <PlacesInput
