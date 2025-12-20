@@ -168,19 +168,24 @@ class PlacesInput extends Component {
         isLoading: true,
       },
       async () => {
-        const places = await fetch(
-          `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${
-            this.state.query
-          }&key=${this.props.googleApiKey}&inputtype=textquery&language=${
-            this.props.language
-          }&fields=${
-            this.props.queryFields
-          }${this.buildLocationQuery()}${this.buildCountryQuery()}${this.buildTypesQuery()}${this.buildSessionQuery()}`
-        ).then(response => response.json());
+        const url = `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${
+          this.state.query
+        }&key=${this.props.googleApiKey}&inputtype=textquery&language=${
+          this.props.language
+        }&fields=${
+          this.props.queryFields
+        }${this.buildLocationQuery()}${this.buildCountryQuery()}${this.buildTypesQuery()}${this.buildSessionQuery()}`;
+        
+        console.log('Places API URL:', url);
+        
+        const places = await fetch(url).then(response => response.json());
+        
+        console.log('Places API Response:', places);
+        console.log('Predictions:', places.predictions);
 
         this.setState({
           isLoading: false,
-          places: places.predictions,
+          places: places.predictions || [],
         });
       }
     );
